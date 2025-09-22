@@ -1,0 +1,72 @@
+/* Requirements
+1) Show menu: add, subtract, multiply, divide, quit. Use enum class and switch.
+2) Read two double operands with validation; reject non-numeric input.
+3) For divide: detect division by zero using if (b == 0); keep the program running.
+*/
+#include <iostream>
+using namespace std;
+int main(){
+  int Operation{};
+  cout << "What would you like to do? Please select a number" << endl << "1. Add" << endl << "2. Subtract" << endl << "3. Divide " << endl <<  "4. Multiply" << endl;
+  if (!(cin >> Operation)) 
+  {      // if Operation is not a number
+         cerr << "Error: non-integer input. Please select a valid number" << '\n';
+        return 1;  // program ends with an error code;
+  }
+  else 
+  {
+     if ( Operation > 0 && Operation < 5 )
+     { 
+        int n1{}, n2{};
+        cout << " What is the first number you would you like to use for the operation?" << endl;
+        if (!(cin >> n1)) 
+             {   // if n1 is not a number
+                cerr << "Error: non-integer input. Please select a valid number" << '\n';
+                return 1;  // program ends with an error code;
+             }
+
+      bool n2IsValid = false;  
+      while (n2IsValid == false)
+      {  
+        cout << " What is the second number you would you like to use for the operation?" << endl;
+        if (!(cin >> n2)) 
+             { // if n2 is not a number
+                cerr << "Error: non-integer input. Please select a valid number" << '\n';
+                return 1;  // program ends with an error code;
+    
+             }
+        else 
+            {
+               if (n2 == 0) {
+                               cerr << "Error: non-integer input. Please select a non zero number for the second number" << '\n';
+                           }
+               else {
+                  n2IsValid = true;
+              }
+       
+            }
+       }
+       switch (Operation)
+          { 
+              case 1: 
+                cout<< "Addition of " << n1 << " by " << n2 << " is " << n1 + n2 << endl;
+                break;
+              case 2:
+                cout<< "Subtraction of " << n1 << " by " << n2 << " is " << n1 - n2 << endl;
+                break;
+              case 3:
+                cout<< "Division of " << n1 << " by " << n2 << " is " << n1 / n2 << endl;
+                break;
+              case 4:
+                cout<< "Multiplication of " << n1 << " by " << n2 << " is " << n1 * n2 << endl;
+                break;
+
+          }
+
+
+     }
+
+ 
+  }
+ 
+}
